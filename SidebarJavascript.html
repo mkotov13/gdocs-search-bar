@@ -1,0 +1,96 @@
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>
+  /**
+   * Run initializations on sidebar load.
+   */
+  $(function() {
+    // Assign handler functions to sidebar elements here, if needed.
+    $('#sidebar-search-button').click(onSearchClick);
+    $('#sidebar-reset-button').click(onResetClick);
+  });
+
+  /**
+   * Gathers the search criteria from the form 
+   * Sends to server to filter the sheet
+   */
+  function onSearchClick() {
+    //this.disabled = true;
+
+    // Gather any information that needs to be sent to the server here.
+    // GFK stands for "Good For Kids"
+    var data = 
+    {
+       month: $('#sidebar-select-month').val(),
+       hot: $('#sidebar-hot').is(':checked'),
+       gfk: $('#sidebar-gfk').is(':checked'),
+       city: $('#sidebar-city').is(':checked'),
+       gfw: $('#sidebar-gfw').is(':checked'),
+       beach: $('#sidebar-beach').is(':checked'),
+       maxcost: $('#sidebar-cost').val(),
+       maxFlightCost: $('#sidebar-flight-cost').val(),
+       hoursFlight: $('#sidebar-flight-hours').val(),
+       hoursDrive: $('#sidebar-drive-hours').val()
+    }
+    
+    console.log(data.month);
+    console.log(data.hot);
+    console.log(data.gfk);
+    console.log(data.city);
+    console.log(data.gfw);
+    console.log(data.beach);
+    console.log(data.maxcost);
+    console.log(data.maxFlightCost);
+    console.log(data.hoursFlight);
+    console.log(data.hoursDrive);
+    
+    
+    // Send the value to the server and handle the response.
+    google.script.run
+        .withSuccessHandler(
+          function(msg, element) {
+            // Respond to success conditions here.
+            //$('#sidebar-value').val(msg);
+            showStatus('Pulled value successfully.');
+            element.disabled = false;
+          })
+        .withFailureHandler(
+          function(msg, element) {
+            // Respond to failure conditions here.
+            showStatus(msg, 'error');
+            element.disabled = false;
+          })
+        .withUserObject(this)
+        .filterSheet(data); 
+  }
+  
+  /**
+   * Tells the server to reset the search on the sheet
+   */
+  function onResetClick() 
+  {
+  google.script.run
+        .withFailureHandler(
+          function(msg, element) {
+            // Respond to failure conditions here.
+            showStatus(msg, 'error');
+            element.disabled = false;
+          })
+        .withUserObject(this)
+        .resetSheet(); 
+  }
+
+  /**
+   * Displays the given status message in the sidebar.
+   *
+   * @param {String} msg The status message to display.
+   * @param {String} classId The message type (class id) that the message
+   *   should be displayed as.
+   */
+  function showStatus(msg, classId) {
+    $('#sidebar-status').removeClass().html(msg);
+    if (classId) {
+      $('#sidebar-status').addClass(classId);
+    }
+  }
+
+</script>

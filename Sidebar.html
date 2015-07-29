@@ -1,0 +1,78 @@
+<!-- Use a templated HTML printing scriptlet to import common stylesheet. -->
+<?!= HtmlService.createHtmlOutputFromFile('Stylesheet').getContent(); ?>
+
+<!-- Below is the HTML code that defines the sidebar element structure. -->
+<!-- Below is the HTML code that defines the sidebar element structure. -->
+<div class="sidebar branding-below">
+  <p>
+  Search hotels
+  </p>
+  <div class="block form-group" id="sidebar-month-block">
+    <label for="sidebar-mnth">Month</label>
+    <select id="sidebar-select-month">
+       <option value="Jan">Jan</option>
+       <option value="Feb">Feb</option>
+       <option value="Mar">Mar</option>
+       <option value="Apr">Apr</option>
+       <option value="May">May</option>
+       <option value="Jun">Jun</option>
+       <option value="Jul">Jul</option>
+       <option value="Aug">Aug</option>
+       <option value="Sep">Sep</option>
+       <option value="Oct">Oct</option>
+       <option value="Nov">Nov</option>
+       <option value="Dec">Dec</option>
+    </select>
+  </div>
+  <div class="block form-group" id="sidebar-hot-block">
+    <label for="sidebar-hot">Hot?</label>
+    <input id="sidebar-hot" value="0" type="checkbox">
+  </div>
+  <div class="block form-group" id="sidebar-hot-block">
+    <label for="sidebar-gfk">Good for Kids?</label>
+    <input id="sidebar-gfk" value="0" type="checkbox">
+  </div>
+  <div class="block form-group" id="sidebar-hot-block">
+    <label for="sidebar-city">City?</label>
+    <input id="sidebar-city" value="0" type="checkbox">
+  </div>
+  <div class="block form-group" id="sidebar-hot-block">
+    <label for="sidebar-gfw">Good For Weekend?</label>
+    <input id="sidebar-gfw" value="0" type="checkbox">
+  </div>
+  <div class="block form-group" id="sidebar-hot-block">
+    <label for="sidebar-beach">Beach?</label>
+    <input id="sidebar-beach" value="0" type="checkbox">
+  </div>
+  <div class="block form-group" id="sidebar-month-block">
+    <label for="sidebar-cost">Max cost per night</label>
+    <input id="sidebar-cost">
+  </div>
+  <div class="block form-group" id="sidebar-month-block">
+    <label for="sidebar-flight-cost">Max flight cost</label>
+    <input id="sidebar-flight-cost">
+  </div>
+  <div class="block form-group" id="sidebar-month-block">
+    <label for="sidebar-flight-hours">Max flight hours from NY</label>
+    <input id="sidebar-flight-hours">
+  </div>
+  <div class="block form-group" id="sidebar-month-block">
+    <label for="sidebar-drive-hours">Max drive hours from NY</label>
+    <input id="sidebar-drive-hours">
+  </div>
+  <div class="block" id="sidebar-button-bar">
+    <button id="sidebar-reset-button">Reset</button>
+    <button id="sidebar-search-button">Search</button>
+  </div>
+  <div id="sidebar-status"></div>
+</div>
+
+<!-- Enter sidebar bottom-branding below. -->
+<div class="sidebar bottom">
+  <img alt="Add-on logo" class="logo" width="25"
+      src="https://googledrive.com/host/0B0G1UdyJGrY6XzdjQWF4a1JYY1k/apps-script_2x.png">
+  <span class="gray branding-text">Spreadsheet Add-on Template by Google</span>
+</div>
+
+<!-- Use a templated HTML printing scriptlet to import JavaScript. -->
+<?!= HtmlService.createHtmlOutputFromFile('SidebarJavaScript').getContent(); ?>
